@@ -67,7 +67,7 @@ void entering_numbers() {
 				printf("Error: Right border must be more than left \n");
 				continue;
 			}
-			borderB = 1;
+			borderB = 1; // Использовал для проверки и для цикла 
 		}
 		borderAll = 1;
 	}
