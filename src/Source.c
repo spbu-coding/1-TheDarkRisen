@@ -2,19 +2,19 @@
 #include <math.h>
 #include <string.h>
 
-#pragma warning(disable : 4996)
-#pragma warning(disable : 6031)
+#pragma warning(disable : 4996) //Отключает предупреждение об устаревших функциях, переменных в библиотеке Visual Studio.
+#pragma warning(disable : 6031) //Отключает предупреждение, что возвращаемое значение "scanf" пропущенно.
 
-#define PI  3.14159
+#define PI 3.14159265358979323846
 
 char answer[6][25];
 double l_border, r_border;
 
-double rectangle_method(int n) {
+double calculate_by_rectangle_method(int parts) {
 	double result = 0, sector;
-		sector = (r_border - l_border) / n;
+	sector = (r_border - l_border) / parts;
 
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < parts; i++) {
 		result += sin(l_border + sector * (i + 0.5));
 	}
 
@@ -22,12 +22,12 @@ double rectangle_method(int n) {
 	return result;
 }
 
-double simpsons_method(int n) {
+double calculate_by_simpsons_method(int parts) {
 	double x, sector, integral;
-	sector = (r_border - l_border) / 2 / n;
+	sector = (r_border - l_border) / 2 / parts;
 	integral = sin(l_border) + sin(r_border);
 	x = l_border + sector;
-	for (int i = 1; i < 2 * n; i++) {
+	for (int i = 1; i < 2 * parts; i++) {
 		if (i % 2 == 0) integral += 2 * sin(x);
 		else integral += 4 * sin(x);
 		x += sector;
@@ -67,7 +67,7 @@ void entering_numbers() {
 				printf("Error: Right border must be more than left \n");
 				continue;
 			}
-			borderB = 1;
+			borderB = 1; // Использовал для проверки и для цикла 
 		}
 		borderAll = 1;
 	}
@@ -77,8 +77,8 @@ void console(int array[]) {
 	char intermediate_line[15];
 	for (int i = 0; i < 6; i++) {
 		double s, r;
-		r = rectangle_method(array[i]);
-		s = simpsons_method(array[i]);
+		r = calculate_by_rectangle_method(array[i]);
+		s = calculate_by_simpsons_method(array[i]);
 		sprintf(intermediate_line, "%d", array[i]);
 		strcat(answer[i], intermediate_line);
 		strcat(answer[i], " ");
@@ -89,10 +89,10 @@ void console(int array[]) {
 		strcat(answer[i], intermediate_line);
 	}
 }
-int main(){
-	int array[] = { 6, 10, 20, 100, 500, 1000 };
+int main() {
+	int array[7] = { 6, 10, 20, 100, 500, 1000,};
 	entering_numbers();
-    console(array);
+	console(array);
 	for (int i = 0; i < 6; i++) {
 		printf("%s\n", answer[i]);
 	}
