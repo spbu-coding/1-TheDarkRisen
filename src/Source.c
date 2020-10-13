@@ -46,7 +46,7 @@ void entering_numbers() {
 				printf("Error:Left border must be more than or equal to 0 \n");
 				continue;
 			}
-			else if (l_border > PI) {
+			else if (l_border > M_PI) {
 				printf("Error: Left border must be less than PI \n");
 				continue;
 			}
@@ -59,7 +59,7 @@ void entering_numbers() {
 				printf("Error: Right border must be more than 0 \n");
 				continue;
 			}
-			else if (r_border > PI) {
+			else if (r_border > M_PI) {
 				printf("Error: Right border must be less than PI \n");
 				continue;
 			}
