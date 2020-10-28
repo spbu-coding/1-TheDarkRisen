@@ -1,11 +1,11 @@
 #include <stdio.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
+#include <stdio.h>
 #include <string.h>
 
 #pragma warning(disable : 4996) //Отключает предупреждение об устаревших функциях, переменных в библиотеке Visual Studio.
 #pragma warning(disable : 6031) //Отключает предупреждение, что возвращаемое значение "scanf" пропущенно.
-
-#define M_PI 3.14159265358979323846
 
 char answer[6][25];
 double l_border, r_border;
